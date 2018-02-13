@@ -1,19 +1,31 @@
 package za.co.ajk.systemgateway.config;
 
-import io.github.jhipster.config.JHipsterProperties;
-
-import za.co.ajk.systemgateway.gateway.ratelimiting.RateLimitingFilter;
-import za.co.ajk.systemgateway.gateway.accesscontrol.AccessControlFilter;
-import za.co.ajk.systemgateway.gateway.responserewriting.SwaggerBasePathRewritingFilter;
-
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
+
+import io.github.jhipster.config.JHipsterProperties;
+import za.co.ajk.systemgateway.gateway.accesscontrol.AccessControlFilter;
+import za.co.ajk.systemgateway.gateway.ratelimiting.RateLimitingFilter;
+import za.co.ajk.systemgateway.gateway.responserewriting.SwaggerBasePathRewritingFilter;
 
 @Configuration
 public class GatewayConfiguration {
-
+    
+    @Bean
+    @LoadBalanced
+    @RefreshScope
+    public RestTemplate restTemplate(RestTemplateBuilder builder, ApplicationProperties props) {
+        builder.setConnectTimeout(props.getRestTemplateConfig().getConnectTimeout());
+        builder.setReadTimeout(props.getRestTemplateConfig().getReadTimeout());
+        return builder.build();
+    }
+    
     @Configuration
     public static class SwaggerBasePathRewritingConfiguration {
 

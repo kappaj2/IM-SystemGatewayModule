@@ -33,6 +33,7 @@ public class MessageSenderImpl implements MessageSender {
     public void sendTestMessage() throws Exception {
         
         InterModulePubSubMessage interModulePubSubMessage = new InterModulePubSubMessage();
+        
         interModulePubSubMessage.setEventType(EventType.START_EVENT);
         interModulePubSubMessage
             .setIncidentDescription("Die ding het ontplof en die hele wereld aan die brand gesteek...");

@@ -88,6 +88,8 @@ public class GoogleChannelManagerImpl implements GoogleChannelManager {
                 .build();
             
             targetTopicsList.forEach(topic -> {
+                
+                log.info("Publishing incidentNumber :"+interModulePubSubMessage.getIncidentNumber()+" to topic : "+topic.toString());
                 ListenableFuture<String> event = pubSubTemplate.publish(topic, mes);
                 try {
                     String id = event.get(5000l, TimeUnit.MILLISECONDS);
@@ -219,6 +221,8 @@ public class GoogleChannelManagerImpl implements GoogleChannelManager {
     
     /**
      * Retrieve the list of topics the message must be send to.
+     * It will use the applicationModuleName and the messageTypeCode to determine the target topic to publish to.
+     * This sending is configured in the application.yml file in the git repo as it is common to all the modules.
      *
      * @param pubSubMessageType
      * @return List<String> A list of topic names. If none found then the list will be empty.

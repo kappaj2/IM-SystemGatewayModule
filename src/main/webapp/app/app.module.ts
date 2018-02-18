@@ -10,7 +10,7 @@ import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
 import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
 import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
-import { SystemGatewayModuleSharedModule, UserRouteAccessService } from './shared';
+import { SystemGatewayModuleSharedModule, UserRouteAccessService, CompanyRouteAccessService } from './shared';
 import { SystemGatewayModuleAppRoutingModule} from './app-routing.module';
 import { SystemGatewayModuleHomeModule } from './home/home.module';
 import { SystemGatewayModuleAdminModule } from './admin/admin.module';

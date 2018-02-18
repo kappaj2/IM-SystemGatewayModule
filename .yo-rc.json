@@ -77,5 +77,8 @@
       "en",
       "nl"
     ]
+  },
+  "generator-jhipster-multitenancy": {
+    "tenantName": "company"
   }
 }

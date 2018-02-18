@@ -13,6 +13,12 @@ import {
     UserMgmtDetailComponent,
     UserMgmtDialogComponent,
     UserMgmtDeleteDialogComponent,
+    CompanyMgmtComponent,
+    CompanyMgmtDetailComponent,
+    CompanyMgmtDialogComponent,
+    CompanyDialogComponent,
+    CompanyDeleteDialogComponent,
+    CompanyMgmtDeleteDialogComponent,
     LogsComponent,
     JhiMetricsMonitoringModalComponent,
     JhiMetricsMonitoringComponent,
@@ -29,13 +35,16 @@ import {
     LogsService,
     UserResolvePagingParams,
     UserResolve,
-    UserModalService
+    UserModalService,
+    CompanyResolvePagingParams,
+    CompanyService,
+    CompanyModalService
 } from './';
 
 @NgModule({
     imports: [
         SystemGatewayModuleSharedModule,
-        RouterModule.forChild(adminState),
+        RouterModule.forRoot(adminState, { useHash: true }),
         /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
     ],
     declarations: [
@@ -46,6 +55,12 @@ import {
         UserMgmtDetailComponent,
         UserMgmtDialogComponent,
         UserMgmtDeleteDialogComponent,
+        CompanyMgmtComponent,
+        CompanyMgmtDetailComponent,
+        CompanyMgmtDialogComponent,
+        CompanyDialogComponent,
+        CompanyDeleteDialogComponent,
+        CompanyMgmtDeleteDialogComponent,
         LogsComponent,
         JhiConfigurationComponent,
         JhiHealthCheckComponent,
@@ -60,6 +75,8 @@ import {
         UserMgmtDeleteDialogComponent,
         JhiHealthModalComponent,
         JhiMetricsMonitoringModalComponent,
+        CompanyMgmtDialogComponent,
+        CompanyMgmtDeleteDialogComponent
     ],
     providers: [
         AuditsService,
@@ -70,7 +87,10 @@ import {
         LogsService,
         UserResolvePagingParams,
         UserResolve,
-        UserModalService
+        UserModalService,
+        CompanyResolvePagingParams,
+        CompanyService,
+        CompanyModalService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

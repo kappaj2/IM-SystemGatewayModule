@@ -24,6 +24,14 @@ describe('administration', () => {
         });
     });
 
+    it('should load company management', () => {
+        navBarPage.clickOnAdmin("company-management");
+        const expect1 = /companyManagement.home.title/;
+        element.all(by.css('h2 span')).first().getAttribute('jhiTranslate').then((value) => {
+            expect(value).toMatch(expect1);
+        });
+    });
+
     it('should load metrics', () => {
         navBarPage.clickOnAdmin('jhi-metrics');
         const expect1 = /metrics.title/;

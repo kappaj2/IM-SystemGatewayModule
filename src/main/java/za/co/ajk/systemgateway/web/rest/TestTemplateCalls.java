@@ -47,7 +47,7 @@ public class TestTemplateCalls {
             //  Another option is to retrieve the payload as a JSON string, and then to parse/handle
             //  the contents here.
             ResponseEntity<String> respJson = restTemplate
-                .getForEntity("http://eventmodule/api/regions", String.class);
+                .getForEntity("http://incidentmodule/api/regions", String.class);
 
             return regions;
 

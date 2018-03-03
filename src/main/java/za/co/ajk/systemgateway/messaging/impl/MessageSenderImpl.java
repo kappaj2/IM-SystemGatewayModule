@@ -3,7 +3,6 @@ package za.co.ajk.systemgateway.messaging.impl;
 import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import za.co.ajk.systemgateway.enums.EventType;
@@ -17,7 +16,7 @@ import za.co.ajk.systemgateway.messaging.googlepubsub.GoogleChannelManager;
 /**
  * Utility class that will send a message to the different topics configured for the module and message type.
  */
-@Service
+//@Service
 public class MessageSenderImpl implements MessageSender {
     
     private GoogleChannelManager googleChannelManager;

@@ -40,8 +40,8 @@ import za.co.ajk.systemgateway.enums.PubSubMessageType;
 import za.co.ajk.systemgateway.messaging.InterModulePubSubMessage;
 import za.co.ajk.systemgateway.messaging.googlepubsub.GoogleChannelManager;
 
-@Component
-@Configuration
+//@Component
+//@Configuration
 public class GoogleChannelManagerImpl implements GoogleChannelManager {
     
     private final Logger log = LoggerFactory.getLogger(getClass());

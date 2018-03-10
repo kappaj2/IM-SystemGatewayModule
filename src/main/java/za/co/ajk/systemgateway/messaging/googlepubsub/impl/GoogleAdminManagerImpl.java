@@ -7,16 +7,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gcp.pubsub.PubSubAdmin;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.stereotype.Component;
 
 import com.google.pubsub.v1.Subscription;
 import com.google.pubsub.v1.SubscriptionName;
 import com.google.pubsub.v1.Topic;
 import com.google.pubsub.v1.TopicName;
 import za.co.ajk.systemgateway.config.PubSubMessagingProperties;
+import za.co.ajk.systemgateway.messaging.MessageImplementationCondition;
 import za.co.ajk.systemgateway.messaging.googlepubsub.GoogleAdminManager;
 
 
-//@Component
+@Component
+@Conditional(MessageImplementationCondition.class)
 public class GoogleAdminManagerImpl implements GoogleAdminManager {
     
     private static Logger log = LoggerFactory.getLogger(GoogleAdminManagerImpl.class);

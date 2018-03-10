@@ -3,6 +3,7 @@ package za.co.ajk.systemgateway.messaging.impl;
 import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,6 +11,7 @@ import za.co.ajk.systemgateway.enums.EventType;
 import za.co.ajk.systemgateway.enums.IncidentPriority;
 import za.co.ajk.systemgateway.enums.PubSubMessageType;
 import za.co.ajk.systemgateway.messaging.InterModulePubSubMessage;
+import za.co.ajk.systemgateway.messaging.MessageImplementationCondition;
 import za.co.ajk.systemgateway.messaging.MessageSender;
 import za.co.ajk.systemgateway.messaging.googlepubsub.GoogleChannelManager;
 
@@ -18,6 +20,7 @@ import za.co.ajk.systemgateway.messaging.googlepubsub.GoogleChannelManager;
  * Utility class that will send a message to the different topics configured for the module and message type.
  */
 @Service
+@Conditional(MessageImplementationCondition.class)
 public class MessageSenderImpl implements MessageSender {
     
     private GoogleChannelManager googleChannelManager;

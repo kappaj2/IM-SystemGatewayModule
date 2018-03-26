@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @RestController
-@RequestMapping("/api/test")
+@RequestMapping("/api/test/v1")
 public class TestTemplateCalls {
     
         private RestTemplate restTemplate;

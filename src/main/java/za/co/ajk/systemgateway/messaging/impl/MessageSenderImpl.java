@@ -3,6 +3,7 @@ package za.co.ajk.systemgateway.messaging.impl;
 import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,9 @@ public class MessageSenderImpl implements MessageSender {
     
     private GoogleChannelManager googleChannelManager;
     
+    @Value("${spring.application.name}")
+    private String moduleName;
+    
     @Autowired
     private ObjectMapper objectMapper;
     
@@ -32,8 +36,12 @@ public class MessageSenderImpl implements MessageSender {
         this.googleChannelManager = googleChannelManager;
     }
     
+    /**
+     * This is a test message that will be submitted.
+     * @throws Exception
+     */
     @Override
-    public void sendTestMessage() throws Exception {
+    public void sendIncidentTestMessage() throws Exception {
         
         InterModulePubSubMessage interModulePubSubMessage = new InterModulePubSubMessage();
         
@@ -46,13 +54,29 @@ public class MessageSenderImpl implements MessageSender {
         interModulePubSubMessage.setMessageDateCreated(Instant.now());
         interModulePubSubMessage.setOperatorName("Andre");
         interModulePubSubMessage.setOriginatingApplicationModuleName("TestModule");
-        interModulePubSubMessage.setPubSubMessageType(PubSubMessageType.GENERIC);
-        
-        String obj = objectMapper.writeValueAsString(interModulePubSubMessage);
+        interModulePubSubMessage.setPubSubMessageType(PubSubMessageType.INCIDENT);
         
         googleChannelManager.pubSubMessageSender(interModulePubSubMessage);
     }
     
+    @Override
+    public void sendGenericMessage() throws Exception{
+    
+        InterModulePubSubMessage interModulePubSubMessage = new InterModulePubSubMessage();
+    
+        interModulePubSubMessage.setEventType(EventType.GENERIC_MESSAGE);
+        interModulePubSubMessage
+            .setIncidentDescription("Generic message to test communications");
+        interModulePubSubMessage.setIncidentHeader("Gen Meesage");
+        interModulePubSubMessage.setIncidentNumber(null);
+        interModulePubSubMessage.setIncidentPriority(IncidentPriority.LOW);
+        interModulePubSubMessage.setMessageDateCreated(Instant.now());
+        interModulePubSubMessage.setOperatorName("Andre");
+        interModulePubSubMessage.setOriginatingApplicationModuleName(moduleName);
+        interModulePubSubMessage.setPubSubMessageType(PubSubMessageType.GENERIC);
+    
+        googleChannelManager.pubSubMessageSender(interModulePubSubMessage);
+    }
     @Override
     public void sendObjMessage(InterModulePubSubMessage interModulePubSubMessage) {
         googleChannelManager.pubSubMessageSender(interModulePubSubMessage);

@@ -90,6 +90,11 @@ public class GoogleAdminManagerImpl implements GoogleAdminManager {
     
     private void createTopic(String topicName) {
         pubSubAdmin.createTopic(topicName);
+        try{
+            Thread.sleep(2000l);
+        }catch(InterruptedException ie){
+        
+        }
     }
     
     private void createSubscription(String topicName, String subscriptionName) {

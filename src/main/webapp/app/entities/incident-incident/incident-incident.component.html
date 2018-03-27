@@ -1,0 +1,87 @@
+<div>
+    <h2>
+        <span jhiTranslate="systemGatewayModuleApp.incident.home.title">Incidents</span>
+        <button class="btn btn-primary float-right jh-create-entity create-incident-incident" [routerLink]="['/', { outlets: { popup: ['incident-incident-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="systemGatewayModuleApp.incident.home.createLabel">
+            Create new Incident
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'systemGatewayModuleApp.incident.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="incidents">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="systemGatewayModuleApp.incident.incidentNumber">Incident Number</span></th>
+            <th><span jhiTranslate="systemGatewayModuleApp.incident.incidentPriorityCode">Incident Priority Code</span></th>
+            <th><span jhiTranslate="systemGatewayModuleApp.incident.incidentTypeCode">Incident Type Code</span></th>
+            <th><span jhiTranslate="systemGatewayModuleApp.incident.incidentHeader">Incident Header</span></th>
+            <th><span jhiTranslate="systemGatewayModuleApp.incident.incidentDescription">Incident Description</span></th>
+            <th><span jhiTranslate="systemGatewayModuleApp.incident.incidentStatusCode">Incident Status Code</span></th>
+            <th><span jhiTranslate="systemGatewayModuleApp.incident.company">Company</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let incident of incidents ;trackBy: trackId">
+                <td><a [routerLink]="['../incident-incident', incident.id ]">{{incident.id}}</a></td>
+                <td>{{incident.incidentNumber}}</td>
+                <td>{{incident.incidentPriorityCode}}</td>
+                <td>{{incident.incidentTypeCode}}</td>
+                <td>{{incident.incidentHeader}}</td>
+                <td>{{incident.incidentDescription}}</td>
+                <td>{{incident.incidentStatusCode}}</td>
+                <td>
+                    <div *ngIf="incident.companyId">
+                        <a [routerLink]="['../company', incident.companyId  ]" >{{incident.companyId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../incident-incident', incident.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'incident-incident/'+ incident.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'incident-incident/'+ incident.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

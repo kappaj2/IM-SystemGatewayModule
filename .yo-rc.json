@@ -2,7 +2,8 @@
   "generator-jhipster": {
     "promptValues": {
       "packageName": "za.co.ajk.systemgateway",
-      "nativeLanguage": "en"
+      "nativeLanguage": "en",
+      "microservicePath": "../IM-InventoryModule"
     },
     "jhipsterVersion": "4.14.0",
     "baseName": "SystemGatewayModule",

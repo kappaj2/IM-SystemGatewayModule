@@ -1,0 +1,30 @@
+
+{
+    "systemGatewayModuleApp": {
+        "region" : {
+            "home": {
+                "title": "Regions",
+                "createLabel": "Maak een nieuwe Region",
+                "createOrEditLabel": "Maak of wijzig een Region",
+                "search": "Search for Region"
+            },
+            "delete": {
+                "question": "Bent u zeker dat u Region {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Region"
+            },
+            "regionCode": "Region Code",
+            "regionName": "Region Name",
+            "incident": "Incident",
+            "country": "Country"
+        }
+    },
+    "inventoryModuleApp": {
+        "region" : {
+            "created": "A new Region is created with identifier {{ param }}",
+            "updated": "A Region is updated with identifier {{ param }}",
+            "deleted": "A Region is deleted with identifier {{ param }}"
+        }
+    }
+}

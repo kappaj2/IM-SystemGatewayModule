@@ -1,0 +1,30 @@
+
+{
+    "systemGatewayModuleApp": {
+        "company" : {
+            "home": {
+                "title": "Companies",
+                "createLabel": "Maak een nieuwe Company",
+                "createOrEditLabel": "Maak of wijzig een Company",
+                "search": "Search for Company"
+            },
+            "delete": {
+                "question": "Bent u zeker dat u Company {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Company"
+            },
+            "name": "Name",
+            "branchCode": "Branch Code",
+            "incident": "Incident",
+            "region": "Region"
+        }
+    },
+    "inventoryModuleApp": {
+        "company" : {
+            "created": "A new Company is created with identifier {{ param }}",
+            "updated": "A Company is updated with identifier {{ param }}",
+            "deleted": "A Company is deleted with identifier {{ param }}"
+        }
+    }
+}

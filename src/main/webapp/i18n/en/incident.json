@@ -1,0 +1,41 @@
+
+{
+    "systemGatewayModuleApp": {
+        "incident" : {
+            "home": {
+                "title": "Incidents",
+                "createLabel": "Create a new Incident",
+                "createOrEditLabel": "Create or edit a Incident",
+                "search": "Search for Incident"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Incident {{ id }}?"
+            },
+            "detail": {
+                "title": "Incident"
+            },
+            "incidentNumber": "Incident Number",
+            "incidentPriorityCode": "Incident Priority Code",
+            "incidentTypeCode": "Incident Type Code",
+            "incidentHeader": "Incident Header",
+            "incidentDescription": "Incident Description",
+            "incidentStatusCode": "Incident Status Code",
+            "dateCreated": "Date Created",
+            "createdBy": "Created By",
+            "dateUpdated": "Date Updated",
+            "updatedBy": "Updated By",
+            "incidentResolution": "Incident Resolution",
+            "dateClosed": "Date Closed",
+            "closedBy": "Closed By",
+            "incidentActivity": "Incident Activity",
+            "company": "Company"
+        }
+    },
+    "incidentModuleApp": {
+        "incident" : {
+            "created": "A new Incident is created with identifier {{ param }}",
+            "updated": "A Incident is updated with identifier {{ param }}",
+            "deleted": "A Incident is deleted with identifier {{ param }}"
+        }
+    }
+}

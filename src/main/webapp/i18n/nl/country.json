@@ -1,0 +1,29 @@
+
+{
+    "systemGatewayModuleApp": {
+        "country" : {
+            "home": {
+                "title": "Countries",
+                "createLabel": "Maak een nieuwe Country",
+                "createOrEditLabel": "Maak of wijzig een Country",
+                "search": "Search for Country"
+            },
+            "delete": {
+                "question": "Bent u zeker dat u Country {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Country"
+            },
+            "countryCode": "Country Code",
+            "countryName": "Country Name",
+            "region": "Region"
+        }
+    },
+    "inventoryModuleApp": {
+        "country" : {
+            "created": "A new Country is created with identifier {{ param }}",
+            "updated": "A Country is updated with identifier {{ param }}",
+            "deleted": "A Country is deleted with identifier {{ param }}"
+        }
+    }
+}

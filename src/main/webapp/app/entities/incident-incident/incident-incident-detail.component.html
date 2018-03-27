@@ -1,0 +1,52 @@
+
+<div *ngIf="incident">
+    <h2><span jhiTranslate="systemGatewayModuleApp.incident.detail.title">Incident</span> {{incident.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="systemGatewayModuleApp.incident.incidentNumber">Incident Number</span></dt>
+        <dd>
+            <span>{{incident.incidentNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="systemGatewayModuleApp.incident.incidentPriorityCode">Incident Priority Code</span></dt>
+        <dd>
+            <span>{{incident.incidentPriorityCode}}</span>
+        </dd>
+        <dt><span jhiTranslate="systemGatewayModuleApp.incident.incidentTypeCode">Incident Type Code</span></dt>
+        <dd>
+            <span>{{incident.incidentTypeCode}}</span>
+        </dd>
+        <dt><span jhiTranslate="systemGatewayModuleApp.incident.incidentHeader">Incident Header</span></dt>
+        <dd>
+            <span>{{incident.incidentHeader}}</span>
+        </dd>
+        <dt><span jhiTranslate="systemGatewayModuleApp.incident.incidentDescription">Incident Description</span></dt>
+        <dd>
+            <span>{{incident.incidentDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="systemGatewayModuleApp.incident.incidentStatusCode">Incident Status Code</span></dt>
+        <dd>
+            <span>{{incident.incidentStatusCode}}</span>
+        </dd>
+        <dt><span jhiTranslate="systemGatewayModuleApp.incident.company">Company</span></dt>
+        <dd>
+            <div *ngIf="incident.companyId">
+                <a [routerLink]="['/company', incident.companyId]">{{incident.companyId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'incident-incident/'+ incident.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

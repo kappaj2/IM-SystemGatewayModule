@@ -10,6 +10,8 @@ import { IncidentIncident } from './incident-incident.model';
 import { IncidentIncidentPopupService } from './incident-incident-popup.service';
 import { IncidentIncidentService } from './incident-incident.service';
 import { CompanyInventory, CompanyInventoryService } from '../company-inventory';
+import {EnumLookupService} from '../../enumlookups/enum-lookup.service';
+import {EnumLookup} from '../../shared/model/enum-lookup';
 
 @Component({
     selector: 'jhi-incident-incident-dialog',
@@ -21,12 +23,14 @@ export class IncidentIncidentDialogComponent implements OnInit {
     isSaving: boolean;
 
     companies: CompanyInventory[];
+    eventTypeEnum: EnumLookup[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private incidentService: IncidentIncidentService,
         private companyService: CompanyInventoryService,
+        private enumLookupService: EnumLookupService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -35,6 +39,8 @@ export class IncidentIncidentDialogComponent implements OnInit {
         this.isSaving = false;
         this.companyService.query()
             .subscribe((res: HttpResponse<CompanyInventory[]>) => { this.companies = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.enumLookupService.find('EventType')
+            .subscribe((res: HttpResponse<EnumLookup[]>) => { this.eventTypeEnum = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {

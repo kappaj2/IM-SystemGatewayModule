@@ -24,6 +24,8 @@ export class IncidentIncidentDialogComponent implements OnInit {
 
     companies: CompanyInventory[];
     eventTypeEnum: EnumLookup[];
+    incidentPriorityEnum: EnumLookup[];
+    incidentStatusTypeEnum: EnumLookup[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -41,6 +43,11 @@ export class IncidentIncidentDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<CompanyInventory[]>) => { this.companies = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.enumLookupService.find('EventType')
             .subscribe((res: HttpResponse<EnumLookup[]>) => { this.eventTypeEnum = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.enumLookupService.find('IncidentPriority')
+            .subscribe((res: HttpResponse<EnumLookup[]>) => { this.incidentPriorityEnum = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.enumLookupService.find('IncidentStatusType')
+            .subscribe((res: HttpResponse<EnumLookup[]>) => { this.incidentStatusTypeEnum = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+
     }
 
     clear() {
